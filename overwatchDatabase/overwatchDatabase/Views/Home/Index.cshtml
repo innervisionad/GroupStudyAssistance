@@ -1,0 +1,55 @@
+﻿@*use IEnumerable so that you can use a foreach loop*@
+@model IEnumerable<overwatchDatabase.Models.Hero>
+    
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<br />
+    @Html.ActionLink("Add new Hero", "Create")
+
+
+
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Class)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Difficulty)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Class)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Difficulty)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  Id = item.Id})
+                @Html.ActionLink("Details", "Details", new { Id = item.Id})
+                @Html.ActionLink("Delete", "Delete", new { ID = item.Id})
+            </td>
+        </tr>
+    }
+
+</table>
